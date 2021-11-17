@@ -42,7 +42,7 @@ spec:
 
 
 ---
-apiVersion: extensions/v1beta1
+apiVersion: extensions/v1
 kind: Ingress
 metadata:
   #namespace: go
@@ -51,10 +51,13 @@ metadata:
     allow.http: "false"
 spec:
   rules:
-  - host: go.rancher.dev-ops-ninja.com
+  - host: go.rancher.devops.pmt.pi.gov.br
     http:
       paths:
         - path: /
+          pathType: Exact
           backend:
-            serviceName: go-service
-            servicePort: 80
+            service: 
+              name: go-service
+              port:
+                number: 80
